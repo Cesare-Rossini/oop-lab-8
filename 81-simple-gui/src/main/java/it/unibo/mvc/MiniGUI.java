@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.TextField;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,11 +48,15 @@ public class MiniGUI {
         });
 
 
-        //Added by the student
+        //Added by the student - PART 1
         final JPanel myPanel = new JPanel();
         myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
         canvas.add(myPanel, BorderLayout.CENTER);
         myPanel.add(write);
+
+        //Added by the student - PART 2
+        //final TextField result = new TextField();
+        //canvas.add(result)
     }
 
     private void display() {
@@ -78,6 +83,7 @@ public class MiniGUI {
          * Resize the frame to minimum size
          */
         frame.pack();
+        //frame.setMinimumSize(frame.getMinimumSize());
         /*
          * OK, ready to pull the frame onscreen
          */
