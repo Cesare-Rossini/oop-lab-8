@@ -1,3 +1,9 @@
-bin/
-build/
+81-simple-gui/bin/
+81-simple-gui/build/
+
+82-tdd-deathnote/bin/
+82-tdd-deathnote/build/
+
+83-mvc-gui-reflection/bin/
+83-mvc-gui-reflection/build/
 *.class

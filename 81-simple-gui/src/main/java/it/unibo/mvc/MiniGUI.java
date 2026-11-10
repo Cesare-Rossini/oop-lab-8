@@ -55,8 +55,8 @@ public class MiniGUI {
         myPanel.add(write);
 
         //Added by the student - PART 2
-        //final TextField result = new TextField();
-        //canvas.add(result)
+        final TextField result = new TextField("Result");
+        canvas.add(result, BorderLayout.NORTH);
     }
 
     private void display() {
@@ -83,7 +83,7 @@ public class MiniGUI {
          * Resize the frame to minimum size
          */
         frame.pack();
-        //frame.setMinimumSize(frame.getMinimumSize());
+        frame.setMinimumSize(frame.getMinimumSize());
         /*
          * OK, ready to pull the frame onscreen
          */
