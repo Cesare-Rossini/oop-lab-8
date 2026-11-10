@@ -60,11 +60,24 @@ class TestDeathNote {
     }
 
     @Test
-    void tesVerifyDeath() {
+    void testVerifyDeath() {
         assertFalse(deathNote.isNameWritten("Umano Uno"));
         deathNote.writeName("Umano Uno");
         assertTrue(deathNote.isNameWritten("Umano Uno"));
         assertFalse(deathNote.isNameWritten("Umano Due")); 
         assertFalse(deathNote.isNameWritten(""));
+    }
+
+    @Test
+    void testCauseTimeframe() {
+        assertThrows(Exception.class , new Executable() {
+            @Override 
+            public void execute () {
+                deathNote.writeDeathCause("test death");
+            }
+        });
+
+        deathNote.writeName("Persona Esempio");
+        assertEquals("heart attack", );
     }
 }    
