@@ -2,6 +2,7 @@ package it.unibo.deathnote;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 import it.unibo.deathnote.api.DeathNote;
@@ -23,10 +24,47 @@ class TestDeathNote {
 
     private DeathNote deathNote = new DeathNoteImpl();
 
+
+    /**
+     * I used anonymous classes che implementa Executable in quanto
+     * assertThrows si aspetta come secondo argomento un Executable
+     */
     @Test 
     public void testIllegalRuleNumber() {
-        assertThrows(new IllegalArgumentException(), deathNote.getRule(-1));
-        assertThrows(new IllegalArgumentException(), deathNote.getRule(0));
-        assertThrows(new IllegalArgumentException(), deathNote.getRule(RULES.size() + 1));
+        assertThrows(IllegalArgumentException.class , new Executable() {
+            @Override 
+            public void execute () {
+                deathNote.getRule(-1);
+            }
+        });
+        assertThrows(IllegalArgumentException.class ,new Executable() {
+            @Override 
+            public void execute () {
+                deathNote.getRule(0);
+            }
+        });
+        assertThrows(IllegalArgumentException.class , new Executable() {
+            @Override 
+            public void execute () {
+                deathNote.getRule(RULES.size() + 1);
+            }
+        });
     }
-}
+
+    @Test
+    void testRules() {
+        for (int i = 1; i <= RULES.size(); i++) {
+            assertNotNull(deathNote.getRule(i));
+            assertFalse(deathNote.getRule(i).isBlank());
+        }
+    }
+
+    @Test
+    void tesVerifyDeath() {
+        assertFalse(deathNote.isNameWritten("Umano Uno"));
+        deathNote.writeName("Umano Uno");
+        assertTrue(deathNote.isNameWritten("Umano Uno"));
+        assertFalse(deathNote.isNameWritten("Umano Due")); 
+        assertFalse(deathNote.isNameWritten(""));
+    }
+}    
