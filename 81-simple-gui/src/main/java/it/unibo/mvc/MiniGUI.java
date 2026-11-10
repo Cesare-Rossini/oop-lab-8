@@ -3,6 +3,7 @@ package it.unibo.mvc;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -48,8 +49,9 @@ public class MiniGUI {
 
         //Added by the student
         final JPanel myPanel = new JPanel();
-        myPanel.setLayout(new BorderLayout());
-        
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
+        canvas.add(myPanel, BorderLayout.CENTER);
+        myPanel.add(write);
     }
 
     private void display() {
