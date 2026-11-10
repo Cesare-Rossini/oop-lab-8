@@ -44,6 +44,12 @@ public class MiniGUI {
                 IO.println(randomGenerator.nextInt());
             }
         });
+
+
+        //Added by the student
+        final JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BorderLayout());
+        
     }
 
     private void display() {
